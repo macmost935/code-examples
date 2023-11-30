@@ -50,7 +50,15 @@ const surveyJson = {
       "Other"
      ],
      "maxSelectedChoices": 1
-     },
+     }, "type": "checkbox",
+     "name": "question3",
+     "visibleIf": "{I confirm that I have read and agree to the above.} = true",
+     "title": "Qualification",
+     "choices": [
+     "Security Specialist (SQSS)",
+      "Competent Person CIPW Level 3",
+      "Other"
+     ],
      {
      "type": "text",
      "name": "question5",
@@ -138,6 +146,37 @@ const surveyJson = {
      ]
      },
      {
+    {
+      "type": "text",
+      "name": "Capacity",
+      "maxWidth": "30%",
+      "description": "Please fill in the maximum capacity of the Site/Building at any time. Including Staff, Customers/Clients, Audience/Crowd.",
+      "hideNumber": true,
+      "size": 15,
+      "isRequired": true // Add the "isRequired" property to make this field mandatory
+    },
+    {
+      "type": "radiogroup",
+      "name": "question 1",
+      "state": "expanded",
+      "visibleIf": "{I confirm that I have read and agree to the above.} = true",
+      "maxWidth": "30%",
+      "choices": [
+        {
+          "value": "CC",
+          "text": "City Centre"
+        },
+        {
+          "value": "CLT",
+          "text": "Centre of Large Town"
+        },
+        {
+          "value": "CST",
+          "text": "Coastal"
+        }
+      ],
+      "isRequired": true // Add the "isRequired" property to make this field mandatory
+    }
      "type": "text",
      "name": "Capacity",
      "maxWidth": "30%",
@@ -247,6 +286,12 @@ function App() {
     // )
   }, []);
 
+  function sanitizeInput(input) {
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(input));
+    return div.innerHTML;
+}
+
   survey.onComplete.add(alertResults);
 
   return <Survey model={survey} />;
@@ -273,3 +318,5 @@ function App() {
 // }
 
 export default App;
+
+
