@@ -234,12 +234,7 @@ const surveyJson = {
      "visibleIf": "{I confirm that I have read and agree to the above.} = true",
      "title": "Risk Matrix"
  }
- ],
- "questionsOrder": "random",
- "showQuestionNumbers": "off",
- "widthMode": "responsive",
- "width": "800px"
-}
+
 
 function App() {
   const survey = new Model(surveyJson);
